@@ -1,0 +1,27 @@
+{
+   "name": "Backbone.Chosen",
+   "version": "0.1.0",
+   "description": "One Collection different models, mapped easy via configuration",
+   "homepage": "http://asciidisco.github.com/Backbone.Chosen/index.html",
+   "keywords": ["backbone", "plugin", "model", "collection", "client", "browser"],
+   "repository": {"type": "git", "url": "git://github.com/asciidisco/Backbone.Chosen.git"},  
+   "author" : "Sebastian Golasch <public@asciidisco.com>",    
+   "maintainers": [
+        {
+            "name": "Sebastian Golasch (asciidisco)",
+            "email": "public@asciidisco.com",
+            "web": "http://asciidisco.com" 
+        }
+   ],
+   "licenses": [{ "type": "MIT", "url": "http://mit-license.org/" }],
+   "repositories": [{ "type": "git", "url": "https://github.com/asciidisco/Backbone.Chosen" }],
+   "lib": ".",
+   "main": "backbone.chosen.js",
+   "devDependencies": { 
+      "grunt": "~0.3.x"
+   },
+  "dependencies": {
+    "underscore"  : "~1.3.1",
+    "backbone": "0.9.x" 
+  }
+}
