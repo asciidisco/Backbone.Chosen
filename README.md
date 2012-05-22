@@ -1,7 +1,7 @@
 Backbone.Chosen
 ===============
 
-One Collection, different models, mapped easy via configuration
+One Collection, different models, mapped easy via configuration.
 
 Backbone.Chosen gives your Backbone Collections multiple personalities.
 It is related to the following Backbone Issue (it´s more a feature request)
