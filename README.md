@@ -345,7 +345,7 @@ see the issues list and stack overflow tag here, you can also reach me on twitte
 * [StackOverflow Tag](http://stackoverflow.com/questions/tagged/backbone.chosen)
 * [Twitter](http://twitter.com/asciidisco)
 
-If you have an idea to improve BAckbone.Chosen or want to report
+If you have an idea to improve Backbone.Chosen or want to report
 a bug, please use the issues list.
 
 ## Compatibility And Requirements

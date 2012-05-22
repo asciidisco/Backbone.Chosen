@@ -1,31 +1,10 @@
-/*! Backbone.Chosen - v0.1.0
+/*! Backbone.Chosen - v0.1.1
 ------------------------------
-Build @ 2012-05-21
+Build @ 2012-05-22
 Documentation and Full License Available at:
 http://asciidisco.github.com/Backbone.Chosen/index.html
 git://github.com/asciidisco/Backbone.Chosen.git
-Copyright (c) 2012 function () {
-
-// If the string looks like an identifier, then we can return it as is.
-// If the string contains no control characters, no quote characters, and no
-// backslash characters, then we can simply slap some quotes around it.
-// Otherwise we must also replace the offending characters with safe
-// sequences.
-
-            if (ix.test(this)) {
-                return this;
-            }
-            if (nx.test(this)) {
-                return '"' + this.replace(nxg, function (a) {
-                    var c = escapes[a];
-                    if (c) {
-                        return c;
-                    }
-                    return '\\u' + ('0000' + a.charCodeAt().toString(16)).slice(-4);
-                }) + '"';
-            }
-            return '"' + this + '"';
-        } <>
+Copyright (c) 2012 Sebastian Golasch <public@asciidisco.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the "Software"),
@@ -87,15 +66,11 @@ IN THE SOFTWARE.*/
 
 }(this, this.define, this.require, this.exports, this.module, function (_, Backbone, root, undef) {
     'use strict';
-    
-    // check if we use the amd branch of backbone and underscore
-    Backbone = (Backbone === undef || Backbone === null) ? root.Backbone : Backbone;
-    _ = (_ === undef || _ === null) ? root._ : _;
 
-    // extend backbones model prototype with the mutator functionality
-    var Chosen     = function () {},
+    // store Backbones prepareModel method, because it will be overriden
+    var Chosen      = function () {},
         oldPrepare  = Backbone.Collection.prototype._prepareModel,
-        mapModels = null;
+        mapModels   = null;
 
     // map models based on the given attribute
     mapModels = function (options, model) {
@@ -122,26 +97,39 @@ IN THE SOFTWARE.*/
         return mappedModel;
     };
 
+    // 
     Chosen.prototype._prepareModel = function (model, options) {
       var modelSkeleton = this.model,
           oldCollection = _.clone(this);
-
-      options = options || {};
 
       if (_.isObject(modelSkeleton) && modelSkeleton.chosen !== undef) {
 
         if (_.isFunction(modelSkeleton.chosen)) {
             oldCollection.model = modelSkeleton.chosen(model);
         } else {
-            // check chosen map args
+            // check if default property is set
+            if (modelSkeleton.chosen.defaults === undef) {
+                throw "Backbone.Chosen Error: defaults property must be set";
+            }            
+
+            // check if map property is set
+            if (modelSkeleton.chosen.map === undef) {
+                throw "Backbone.Chosen Error: map property must be set";
+            }
+
+            // check if attr property is set
+            if (modelSkeleton.chosen.attr === undef) {
+                throw "Backbone.Chosen Error: attr property must be set";
+            }            
+
             // check default model skeleton
             if ((modelSkeleton.chosen.defaults.prototype instanceof Backbone.Model) === false) {
                 throw "Backbone.Chosen Error: defaults property must be of type Backbone.Model";
             }
 
             // check map property
-            if (_.isObject(modelSkeleton.chosen.map) === false) {
-                throw "Backbone.Chosen Error: map property must be an object literal";
+            if (_.isObject(modelSkeleton.chosen.map) === false || _.isArray(modelSkeleton.chosen.map) === true || _.isFunction(modelSkeleton.chosen.map) === true) {
+                throw "Backbone.Chosen Error: map must be an object literal";
             } else {
                 _.each(modelSkeleton.chosen.map, function (modelRaw, key) {
                     if ((modelRaw.prototype instanceof Backbone.Model) === false) {
