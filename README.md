@@ -51,7 +51,7 @@ To get the latest stable release, use these links which point to the 'master' br
 builds:
 
 Development: [backbone.chosen.js](https://raw.github.com/asciidisco/backbone.chosen/master/backbone.chosen.js)
-Production: [backbone.chosen.min.js](https://raw.github.com/asciidisco/backbone.chosen/masterbackbone.chosen.min.js)
+Production: [backbone.chosen.min.js](https://raw.github.com/asciidisco/backbone.chosen/master/backbone.chosen.min.js)
 
 ### VOLO
 ```shell
