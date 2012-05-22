@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         'Documentation and Full License Available at:\n' +
         '<%= pkg.homepage %>\n' +
         '<%= pkg.repository.url %>\n' +
-        'Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %> <<%= pkg.author.email %>>\n\n' +
+        'Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n\n' +
         'Permission is hereby granted, free of charge, to any person obtaining a\n' +
         'copy of this software and associated documentation files (the "Software"),\n' +
         'to deal in the Software without restriction, including without limitation\n' +

@@ -1,6 +1,6 @@
 {
    "name": "Backbone.Chosen",
-   "version": "0.1.0",
+   "version": "0.1.1",
    "description": "One Collection different models, mapped easy via configuration",
    "homepage": "http://asciidisco.github.com/Backbone.Chosen/index.html",
    "keywords": ["backbone", "plugin", "model", "collection", "client", "browser"],
