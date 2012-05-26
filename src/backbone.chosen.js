@@ -1,4 +1,4 @@
-(function (root, define, require, exports, module, factory, undef) {
+(function umdDefine (root, define, require, exports, module, factory, undef) {
     'use strict';
     if (typeof exports === 'object') {
         // Node. Does not work with strict CommonJS, but
@@ -7,7 +7,7 @@
         module.exports = factory(require('underscore'), require('backbone'));
     } else if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['underscore', 'backbone'], function (_, Backbone) {
+        define(['underscore', 'backbone'], function amdDefine (_, Backbone) {
             // Check if we use the AMD branch of Backbone
             _ = _ === undef ? root._ : _;
             Backbone = Backbone === undef ? root.Backbone : Backbone;
@@ -38,7 +38,7 @@
 //    return User;
 // });
 
-}(this, this.define, this.require, this.exports, this.module, function (_, Backbone, root, undef) {
+}(this, this.define, this.require, this.exports, this.module, function chosenBody (_, Backbone, root, undef) {
     'use strict';
 
     // store Backbones prepareModel method, because it will be overriden
@@ -54,7 +54,7 @@
         if (options.attr.search('.') !== -1) {
             var mappedAttribute = model,
                 attributes = options.attr.split('.');
-            _.each(attributes, function (attribute, key) {
+            _.each(attributes, function attributesIterator (attribute, key) {
                 mappedAttribute = mappedAttribute[attribute];
                 if (key === (attributes.length - 1)) {
                     attr = mappedAttribute;
@@ -62,7 +62,7 @@
             });
         }
 
-        _.each(options.map, function (modelRaw, key) {
+        _.each(options.map, function modelMapIterator (modelRaw, key) {
             if (key === attr) {
                 mappedModel = modelRaw;
             }
@@ -74,7 +74,8 @@
     // 
     Chosen.prototype._prepareModel = function (model, options) {
       var modelSkeleton = this.model,
-          oldCollection = _.clone(this);
+          oldCollection = _.clone(this),
+          chosenError   = 'Backbone.Chosen Error: ';
 
       if (_.isObject(modelSkeleton) && modelSkeleton.chosen !== undef) {
 
@@ -83,38 +84,38 @@
         } else {
             // check if default property is set
             if (modelSkeleton.chosen.defaults === undef) {
-                throw "Backbone.Chosen Error: defaults property must be set";
+                throw chosenError + 'defaults property must be set';
             }            
 
             // check if map property is set
             if (modelSkeleton.chosen.map === undef) {
-                throw "Backbone.Chosen Error: map property must be set";
+                throw chosenError + 'map property must be set';
             }
 
             // check if attr property is set
             if (modelSkeleton.chosen.attr === undef) {
-                throw "Backbone.Chosen Error: attr property must be set";
+                throw chosenError + 'attr property must be set';
             }            
 
             // check default model skeleton
             if ((modelSkeleton.chosen.defaults.prototype instanceof Backbone.Model) === false) {
-                throw "Backbone.Chosen Error: defaults property must be of type Backbone.Model";
+                throw chosenError + 'defaults property must be of type Backbone.Model';
             }
 
             // check map property
             if (_.isObject(modelSkeleton.chosen.map) === false || _.isArray(modelSkeleton.chosen.map) === true || _.isFunction(modelSkeleton.chosen.map) === true) {
-                throw "Backbone.Chosen Error: map must be an object literal";
+                throw chosenError + 'map must be an object literal';
             } else {
-                _.each(modelSkeleton.chosen.map, function (modelRaw, key) {
+                _.each(modelSkeleton.chosen.map, function modelMapIteratorInstanceCheck (modelRaw, key) {
                     if ((modelRaw.prototype instanceof Backbone.Model) === false) {
-                        throw "Backbone.Chosen Error: map property values must be of type Backbone.Model";
+                        throw chosenError + 'map property values must be of type Backbone.Model';
                     }
                 });
             }
 
             // check attr property
             if (_.isString(modelSkeleton.chosen.attr) === false) {
-                throw "Backbone.Chosen Error: attr property must be a string";
+                throw chosenError + 'attr property must be a string';
             }
 
             oldCollection.model = mapModels(modelSkeleton.chosen, model);

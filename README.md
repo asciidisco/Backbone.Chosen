@@ -36,7 +36,7 @@ Backbone.Chosen to the rescue.
 ## Build Status, Project Page, Annotated Source & Tests
 [![Build Status](https://secure.travis-ci.org/asciidisco/Backbone.Chosen.png?branch=master)](http://travis-ci.org/asciidisco/Backbone.Chosen)<br /><br />
 [Project Page](http://asciidisco.github.com/Backbone.Chosen/index.html)<br />
-[Docs](http://asciidisco.github.com/Backbone.Chosen/docs/backbone.chosen.html)<br />
+[Docs](http://docmaps.io/asciidisco/Backbone.Chosen/src/backbone.chosen.js)<br />
 [Tests](http://asciidisco.github.com/Backbone.Chosen/test/index.html)<br />
 [NPM registry](http://search.npmjs.org/#/Backbone.Chosen)
 
@@ -50,7 +50,7 @@ builds from the root directory.
 To get the latest stable release, use these links which point to the 'master' branch's
 builds:
 
-Development: [backbone.chosen.js](https://raw.github.com/asciidisco/backbone.chosen/master/backbone.chosen.js)
+Development: [backbone.chosen.js](https://raw.github.com/asciidisco/backbone.chosen/master/backbone.chosen.js)<br />
 Production: [backbone.chosen.min.js](https://raw.github.com/asciidisco/backbone.chosen/master/backbone.chosen.min.js)
 
 ### VOLO
@@ -388,7 +388,8 @@ passed using JSHint
 
 ### Annotated Source Code
 
-I'm using [Docco](http://jashkenas.github.com/docco/) to generate the annotated source code.
+I'm using [Docco](http://jashkenas.github.com/docco/) to generate the annotated source code together
+with the great [DocMaps](http://docmaps.io) service.
 
 ## Release Notes (Changlog)
 
