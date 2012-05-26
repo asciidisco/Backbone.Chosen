@@ -50,7 +50,7 @@ builds from the root directory.
 To get the latest stable release, use these links which point to the 'master' branch's
 builds:
 
-Development: [backbone.chosen.js](https://raw.github.com/asciidisco/backbone.chosen/master/backbone.chosen.js)<br />
+Development: [backbone.chosen.js](https://raw.github.com/asciidisco/backbone.chosen/master/backbone.chosen.js)
 Production: [backbone.chosen.min.js](https://raw.github.com/asciidisco/backbone.chosen/master/backbone.chosen.min.js)
 
 ### VOLO
