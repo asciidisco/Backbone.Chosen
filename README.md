@@ -28,7 +28,7 @@ You fetch a set of json data, lets say some filesystem contents:
 ```
 
 Then you create a collection containing all of this entries, but you want
-create different models for files and directories.
+to create different models for files and directories.
 
 With the standard behaviour of Backbone, this is not possible.
 Backbone.Chosen to the rescue.
